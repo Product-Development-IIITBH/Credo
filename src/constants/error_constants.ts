@@ -1,0 +1,63 @@
+export const ERROR_CODES = {
+  // Validation Errors (4xx)
+  INVALID_REQUEST: 'INVALID_REQUEST',
+  INVALID_GATEWAY: 'INVALID_GATEWAY',
+  MISSING_REQUIRED_FIELD: 'MISSING_REQUIRED_FIELD',
+  INVALID_AMOUNT: 'INVALID_AMOUNT',
+  GATEWAY_NOT_ENABLED: 'GATEWAY_NOT_ENABLED',
+
+  // Authentication Errors (401, 403)
+  UNAUTHORIZED: 'UNAUTHORIZED',
+  INVALID_API_KEY: 'INVALID_API_KEY',
+  IP_NOT_ALLOWED: 'IP_NOT_ALLOWED',
+
+  // Gateway Errors (502, 503, 504)
+  GATEWAY_TIMEOUT: 'GATEWAY_TIMEOUT',
+  GATEWAY_ERROR: 'GATEWAY_ERROR',
+  GATEWAY_UNAVAILABLE: 'GATEWAY_UNAVAILABLE',
+  GATEWAY_INVALID_RESPONSE: 'GATEWAY_INVALID_RESPONSE',
+
+  // Crypto Errors (500)
+  ENCRYPTION_FAILED: 'ENCRYPTION_FAILED',
+  DECRYPTION_FAILED: 'DECRYPTION_FAILED',
+  SIGNATURE_VERIFICATION_FAILED: 'SIGNATURE_VERIFICATION_FAILED',
+  INVALID_ENCRYPTION_KEY: 'INVALID_ENCRYPTION_KEY',
+
+  // Verification Errors (500)
+  VERIFICATION_FAILED: 'VERIFICATION_FAILED',
+  STATUS_MISMATCH: 'STATUS_MISMATCH',
+  REFNO_NOT_FOUND: 'REFNO_NOT_FOUND',
+
+  // Internal Errors (500)
+  INTERNAL_ERROR: 'INTERNAL_ERROR',
+  CONFIGURATION_ERROR: 'CONFIGURATION_ERROR',
+} as const;
+
+export const ERROR_MESSAGES: Record<string, string> = {
+  [ERROR_CODES.INVALID_REQUEST]: 'Invalid request format',
+  [ERROR_CODES.INVALID_GATEWAY]: 'Invalid or unsupported gateway',
+  [ERROR_CODES.MISSING_REQUIRED_FIELD]: 'Missing required field',
+  [ERROR_CODES.INVALID_AMOUNT]: 'Invalid payment amount',
+  [ERROR_CODES.GATEWAY_NOT_ENABLED]: 'Gateway is not enabled or configured',
+
+  [ERROR_CODES.UNAUTHORIZED]: 'Unauthorized request',
+  [ERROR_CODES.INVALID_API_KEY]: 'Invalid API key',
+  [ERROR_CODES.IP_NOT_ALLOWED]: 'IP address not allowed',
+
+  [ERROR_CODES.GATEWAY_TIMEOUT]: 'Gateway request timed out',
+  [ERROR_CODES.GATEWAY_ERROR]: 'Gateway returned an error',
+  [ERROR_CODES.GATEWAY_UNAVAILABLE]: 'Gateway is currently unavailable',
+  [ERROR_CODES.GATEWAY_INVALID_RESPONSE]: 'Gateway returned invalid response',
+
+  [ERROR_CODES.ENCRYPTION_FAILED]: 'Failed to encrypt payment data',
+  [ERROR_CODES.DECRYPTION_FAILED]: 'Failed to decrypt callback data',
+  [ERROR_CODES.SIGNATURE_VERIFICATION_FAILED]: 'Signature verification failed',
+  [ERROR_CODES.INVALID_ENCRYPTION_KEY]: 'Invalid encryption key configuration',
+
+  [ERROR_CODES.VERIFICATION_FAILED]: 'Payment verification failed',
+  [ERROR_CODES.STATUS_MISMATCH]: 'Callback status does not match verification',
+  [ERROR_CODES.REFNO_NOT_FOUND]: 'Transaction reference not found',
+
+  [ERROR_CODES.INTERNAL_ERROR]: 'Internal server error',
+  [ERROR_CODES.CONFIGURATION_ERROR]: 'Service configuration error',
+};
