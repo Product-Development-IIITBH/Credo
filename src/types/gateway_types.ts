@@ -14,10 +14,10 @@ export enum PaymentStatus {
 }
 
 export enum FeeType {
-  INSTITUTE = 'institute',
-  HOSTEL = 'hostel',
-  MESS = 'mess',
-  DUE = 'due',
-  OTHER = 'other',
-  MISC = 'misc',
+  INSTITUTE = 'INSTITUTE',
+  HOSTEL = 'HOSTEL',
+  MESS = 'MESS',
+  DUE = 'DUE',
+  OTHER = 'OTHER',
+  MISC = 'MISC',
 }

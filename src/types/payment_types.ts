@@ -1,11 +1,15 @@
 import { GatewayType, PaymentStatus, FeeType } from './gateway_types';
 
+export enum TermType {
+  SPRING = 'SPRING',
+  AUTUMN = 'AUTUMN',
+}
 export interface PaymentMetadata {
   userId: string;
   roll?: string;
   session: string;
-  term: 'SPRING' | 'AUTUMN';
-  semester: string;
+  term: TermType;
+  semester?: number;
   type: FeeType;
   applicationId?: string;
 }
