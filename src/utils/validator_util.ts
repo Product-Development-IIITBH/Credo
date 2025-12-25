@@ -30,8 +30,8 @@ export const paymentMetadataSchema = z.object({
   applicationId: z.string().optional(),
 });
 
-export const priceSchema = z.object({
-  amount: z
+export const amountSchema = z.object({
+  value: z
     .number()
     .positive('Amount must be greater than 0')
     .refine(
@@ -52,7 +52,7 @@ export const paymentInitiationSchema = z.object({
   }),
   merchantOrderNo: z.string().min(1, 'Merchant order number is required'),
   paymentIndent: z.string().min(1, 'Payment indent is required'),
-  price: priceSchema,
+  amount: amountSchema,
   metadata: paymentMetadataSchema,
 });
 
@@ -67,7 +67,7 @@ export const verificationSchema = z
     gateway: z.nativeEnum(GatewayType),
     merchantOrderNo: z.string().optional(),
     refno: z.string().optional(),
-    price: priceSchema.optional(),
+    amount: amountSchema.optional(),
   })
   .refine(
     (data) => data.merchantOrderNo || data.refno,
