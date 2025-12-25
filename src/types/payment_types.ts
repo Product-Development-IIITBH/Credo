@@ -14,8 +14,8 @@ export interface PaymentMetadata {
   applicationId?: string;
 }
 
-export interface PriceMetadata {
-  amount: number;
+export interface Amount {
+  value: number;
   currency: string;
 }
 
@@ -23,7 +23,7 @@ export interface PaymentInitiationRequest {
   gateway: GatewayType;
   merchantOrderNo: string;
   paymentIndent: string;
-  price: PriceMetadata;
+  amount: Amount;
   metadata: PaymentMetadata;
 }
 
@@ -58,7 +58,7 @@ export interface VerificationRequest {
   gateway: GatewayType;
   merchantOrderNo?: string;
   refno?: string;
-  price?: PriceMetadata;
+  amount?: Amount;
 }
 
 export interface VerificationResponse {
@@ -67,7 +67,7 @@ export interface VerificationResponse {
   merchantOrderNo: string;
   status: PaymentStatus;
   refno: string;
-  price: PriceMetadata;
+  amount: Amount;
   metadata: PaymentMetadata;
   rawResponse: Record<string, any>;
   verifiedAt: string;
