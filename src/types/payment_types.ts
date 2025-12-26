@@ -7,6 +7,9 @@ export enum TermType {
 export interface PaymentMetadata {
   userId: string;
   roll?: string;
+  name?: string;
+  contact?: string;
+  email?: string;
   session: string;
   term: TermType;
   semester?: number;
