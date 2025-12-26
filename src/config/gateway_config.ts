@@ -52,6 +52,10 @@ export const gatewayConfigs: Record<string, GatewayConfig> = {
       paymentUrl: env.CANARA_PAYMENT_URL || '',
       callbackUrl: env.CANARA_CALLBACK_URL || '',
       reverificationUrl: env.CANARA_REVERIFICATION_URL || '',
+      gatewayDeviceInitChannel: env.GATEWAY_DEVICE_INIT_CHANNEL,
+      gatewayDeviceIp: env.GATEWAY_DEVICE_IP,
+      gatewayDeviceAcceptHeader: env.GATEWAY_DEVICE_ACCEPT_HEADER,
+      gatewayDeviceUserAgent: env.GATEWAY_DEVICE_USER_AGENT,
     },
   },
   CONSOLE: {

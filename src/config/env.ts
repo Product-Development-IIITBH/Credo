@@ -38,6 +38,16 @@ const envSchema = z.object({
   CANARA_CALLBACK_URL: z.string().url().optional(),
   CANARA_REVERIFICATION_URL: z.string().url().optional(),
 
+  // Gateway Device Configuration
+  GATEWAY_DEVICE_INIT_CHANNEL: z.string().default('internet'),
+  GATEWAY_DEVICE_IP: z.string().ip().default('127.0.0.1'),
+  GATEWAY_DEVICE_ACCEPT_HEADER: z.string().default('text/html'),
+  GATEWAY_DEVICE_USER_AGENT: z
+    .string()
+    .default(
+      'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'
+    ),
+
   // Console Gateway (Dev Only)
   ENABLE_CONSOLE_GATEWAY: z
     .string()
