@@ -1,10 +1,13 @@
 import { z } from 'zod';
 
+import dotenv from 'dotenv';
+dotenv.config();
+
 const envSchema = z.object({
   NODE_ENV: z
     .enum(['development', 'staging', 'production'])
     .default('development'),
-  PORT: z.string().default('6000'),
+  PORT: z.string().default('6003'),
   API_VERSION: z.string().default('v1'),
 
   // Security
