@@ -70,7 +70,7 @@ export class CanaraGateway extends BaseGateway {
           additional_info4: request.metadata.contact || '',
           additional_info5: request.metadata.session,
           additional_info6: request.metadata.term,
-          additional_info7: request.metadata.semester || '',
+          additional_info7: request.metadata.semester?.toString() || '',
           additional_info8: request.metadata.type,
           additional_info9: request.metadata.roll || '',
         },
@@ -384,9 +384,7 @@ export class CanaraGateway extends BaseGateway {
           contact: verificationResponse.additional_info.additional_info4,
           session: verificationResponse.additional_info.additional_info5,
           term: verificationResponse.additional_info.additional_info6,
-          semester: verificationResponse.additional_info.additional_info7
-            ? parseInt(verificationResponse.additional_info.additional_info7)
-            : undefined,
+          semester: verificationResponse.additional_info.additional_info7,
           type: verificationResponse.additional_info.additional_info8,
         },
         rawResponse: verificationResponse,
