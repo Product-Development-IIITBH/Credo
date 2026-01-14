@@ -23,7 +23,7 @@ export const paymentMetadataSchema = z.object({
   term: z.nativeEnum(TermType, {
     errorMap: () => ({ message: 'Invalid term' }),
   }),
-  semester: z.number().optional(),
+  semester: z.string().optional(),
   type: z.nativeEnum(FeeType, {
     errorMap: () => ({ message: 'Invalid fee type' }),
   }),

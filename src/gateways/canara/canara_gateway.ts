@@ -70,7 +70,7 @@ export class CanaraGateway extends BaseGateway {
           additional_info4: request.metadata.contact || '',
           additional_info5: request.metadata.session,
           additional_info6: request.metadata.term,
-          additional_info7: request.metadata.semester?.toString() || '',
+          additional_info7: request.metadata.semester || '',
           additional_info8: request.metadata.type,
           additional_info9: request.metadata.roll || '',
         },

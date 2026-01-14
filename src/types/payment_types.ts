@@ -12,7 +12,7 @@ export interface PaymentMetadata {
   email?: string;
   session: string;
   term: TermType;
-  semester?: number;
+  semester?: string;
   type: FeeType;
   applicationId?: string;
 }
