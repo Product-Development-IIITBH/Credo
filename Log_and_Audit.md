@@ -54,7 +54,7 @@
   requestId: "req-uuid-123",
   gateway: "UCO",
   merchantOrderNo: "SAPV2-ORD-12345",
-  paymentIndent: "INDENT-67890",
+  paymentIntent: "INDENT-67890",
   amount: 5000,
   metadata: {
     roll: "2021BCS001",
@@ -491,7 +491,7 @@ interface LogEntry {
   // Context Fields
   gateway?: string; // UCO, SBI, CANARA, CONSOLE
   merchantOrderNo?: string; // Primary correlation key
-  paymentIndent?: string; // SAPv2's idempotency key
+  paymentIntent?: string; // SAPv2's idempotency key
   refno?: string; // Gateway transaction ID
 
   // Source Tracking

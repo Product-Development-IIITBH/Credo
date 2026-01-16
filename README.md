@@ -71,7 +71,7 @@ In SAP v1:
 - Student fee updates
 - Academic status updates
 - Recalculation logic
-- Business idempotency (handled by SAPv2 via `paymentIndent`)
+- Business idempotency (handled by SAPv2 via `paymentIntent`)
 - Database operations
 - Event emission (SAPv2's responsibility)
 
@@ -112,7 +112,7 @@ SAPv2 ──REST──▶ Credo ──▶ Bank Gateway
 
 ### SAPv2 Owns
 
-- `paymentIndent` (idempotency key)
+- `paymentIntent` (idempotency key)
 - Transaction records
 - StudentTermEnrollment updates
 - Fee status updates
@@ -135,12 +135,12 @@ SAPv2 ──REST──▶ Credo ──▶ Bank Gateway
 
 ## 7. Core Concepts
 
-### 7.1 paymentIndent (SAPv2-owned)
+### 7.1 paymentIntent (SAPv2-owned)
 
 - Business-level idempotency key
 - Stable across payment retries
 - One intent → multiple attempts
-- Credo **receives** paymentIndent but does not manage it
+- Credo **receives** paymentIntent but does not manage it
 
 ### 7.2 merchantOrderNo (Attempt ID)
 
@@ -174,7 +174,7 @@ SAPv2 ──REST──▶ Credo ──▶ Bank Gateway
 {
   "gateway": "UCO",
   "merchantOrderNo": "ORDER-123",
-  "paymentIndent": "INDENT-456",
+  "paymentIntent": "INDENT-456",
   "amount": {
     "value": 50000,
     "currency": "INR"
@@ -338,7 +338,7 @@ Bank Gateway → SAPv2 (Public URL) → Credo
 {
   "eventType": "PaymentCompleted",
   "merchantOrderNo": "ORDER-123",
-  "paymentIndent": "INDENT-456",
+  "paymentIntent": "INDENT-456",
   "gateway": "UCO",
   "status": "SUCCESS",
   "amount": 50000,
@@ -451,15 +451,15 @@ Bank Gateway → SAPv2 (Public URL) → Credo
 
 ### SAPv2 Level (Primary)
 
-- Redis-based idempotency using `paymentIndent`
+- Redis-based idempotency using `paymentIntent`
 - Database transaction records
-- Business logic ensures single fee update per `paymentIndent`
+- Business logic ensures single fee update per `paymentIntent`
 - Event emission is idempotent
 
 **Example**:
 
 ```
-paymentIndent: INDENT-123
+paymentIntent: INDENT-123
   ├─ Attempt 1: ORDER-001 (FAILED - user closed browser)
   ├─ Attempt 2: ORDER-002 (FAILED - network error)
   └─ Attempt 3: ORDER-003 (SUCCESS)
@@ -536,7 +536,7 @@ X-API-Key: your-api-key
 {
   "gateway": "UCO",
   "merchantOrderNo": "ORDER-123",
-  "paymentIndent": "INDENT-456",
+  "paymentIntent": "INDENT-456",
   "amount": { "value": 50000, "currency": "INR" },
   "metadata": { ... }
 }
@@ -626,7 +626,7 @@ import { credo, GatewayType, TermType } from './services/integrations/credo';
 const paymentResponse = await credo.payment.initiatePayment({
   gateway: GatewayType.UCO,
   merchantOrderNo: generateMerchantOrderNo(),
-  paymentIndent: getOrCreatePaymentIndent(userId),
+  paymentIntent: getOrCreatePaymentIntent(userId),
   amount: { value: 50000, currency: 'INR' },
   metadata: { userId, session, term, semester, type },
 });
