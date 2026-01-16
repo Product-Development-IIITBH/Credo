@@ -31,7 +31,7 @@ export class PaymentService {
       {
         gateway: request.gateway,
         merchantOrderNo: request.merchantOrderNo,
-        paymentIndent: request.paymentIndent,
+        paymentIntent: request.paymentIntent,
         amount: request.amount.value,
         currency: request.amount.currency,
         userId: request.metadata.userId,

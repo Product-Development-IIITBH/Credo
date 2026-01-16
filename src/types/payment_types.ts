@@ -25,7 +25,7 @@ export interface Amount {
 export interface PaymentInitiationRequest {
   gateway: GatewayType;
   merchantOrderNo: string;
-  paymentIndent: string;
+  paymentIntent: string;
   amount: Amount;
   metadata: PaymentMetadata;
 }

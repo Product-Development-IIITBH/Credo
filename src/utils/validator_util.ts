@@ -51,7 +51,7 @@ export const paymentInitiationSchema = z.object({
     errorMap: () => ({ message: 'Invalid gateway type' }),
   }),
   merchantOrderNo: z.string().min(1, 'Merchant order number is required'),
-  paymentIndent: z.string().min(1, 'Payment indent is required'),
+  paymentIntent: z.string().min(1, 'Payment intent is required'),
   amount: amountSchema,
   metadata: paymentMetadataSchema,
 });
