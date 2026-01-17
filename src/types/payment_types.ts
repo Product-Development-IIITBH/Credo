@@ -14,7 +14,7 @@ export interface PaymentMetadata {
   term: TermType;
   semester?: string;
   type: FeeType;
-  applicationId?: string;
+  registrationId?: string;
 }
 
 export interface Amount {
