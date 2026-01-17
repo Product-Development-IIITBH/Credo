@@ -2,7 +2,6 @@ export enum GatewayType {
   UCO = 'UCO',
   SBI = 'SBI',
   CANARA = 'CANARA',
-  CONSOLE = 'CONSOLE',
 }
 
 export enum PaymentStatus {

@@ -58,11 +58,6 @@ export const gatewayConfigs: Record<string, GatewayConfig> = {
       gatewayDeviceUserAgent: env.GATEWAY_DEVICE_USER_AGENT,
     },
   },
-  CONSOLE: {
-    enabled: env.ENABLE_CONSOLE_GATEWAY,
-    name: 'Console Gateway (Development)',
-    config: {},
-  },
 };
 
 export const getEnabledGateways = (): string[] => {

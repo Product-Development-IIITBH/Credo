@@ -51,12 +51,6 @@ const envSchema = z.object({
       'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'
     ),
 
-  // Console Gateway (Dev Only)
-  ENABLE_CONSOLE_GATEWAY: z
-    .string()
-    .transform((val) => val === 'true')
-    .default('false'),
-
   // Other configs
   LOG_LEVEL: z.string().default('info'),
   OTEL_SERVICE_NAME: z.string().default('credo-service'),
