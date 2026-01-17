@@ -49,5 +49,10 @@ export interface UCORequeryResponse {
   udf3: string;
   udf4: string;
   udf5: string; // JSON string
+  udf6: string;
+  udf7: string;
+  udf8: string;
+  udf9: string;
+  udf10: string;
   merchantTransactionId: string;
 }
