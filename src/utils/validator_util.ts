@@ -31,7 +31,7 @@ export const paymentMetadataSchema = z.object({
 });
 
 export const amountSchema = z.object({
-  value: z
+  value: z.coerce
     .number()
     .positive('Amount must be greater than 0')
     .refine(
