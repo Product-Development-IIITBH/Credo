@@ -246,9 +246,6 @@ export abstract class BaseGateway implements IGateway {
           ? PaymentStatus.SUCCESS
           : PaymentStatus.FAILED;
 
-      case GatewayType.CONSOLE:
-        return PaymentStatus.SUCCESS;
-
       default:
         return PaymentStatus.ERROR;
     }

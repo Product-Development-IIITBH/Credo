@@ -8,7 +8,6 @@ import { log } from '@/utils';
 import { UCOGateway } from '../uco/uco_gateway';
 import { SBIGateway } from '../sbi/sbi_gateway';
 import { CanaraGateway } from '../canara/canara_gateway';
-import { ConsoleGateway } from '../console/console_gateway';
 import { env } from '@/config/env';
 
 export class GatewayFactory {
@@ -63,20 +62,6 @@ export class GatewayFactory {
     let gateway: IGateway;
 
     switch (gatewayType) {
-      case GatewayType.CONSOLE:
-        if (env.NODE_ENV === 'production') {
-          log.error(
-            'Console gateway cannot be used in production',
-            {
-              gatewayType,
-            },
-            'GatewayFactory'
-          );
-          throw new Error(ERROR_MESSAGES[ERROR_CODES.INVALID_GATEWAY]);
-        }
-        gateway = new ConsoleGateway(gatewayConfig.config);
-        break;
-
       case GatewayType.UCO:
         gateway = new UCOGateway(gatewayConfig.config);
         break;
