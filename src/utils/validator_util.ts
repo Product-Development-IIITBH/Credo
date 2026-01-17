@@ -15,6 +15,9 @@ export class ValidationError extends Error {
 
 export const paymentMetadataSchema = z.object({
   userId: z.string().min(1, 'User ID is required'),
+  email: z.string().email('Invalid email address').optional(),
+  contact: z.string().optional(),
+  name: z.string().optional(),
   roll: z.string().optional(),
   session: z
     .string()
@@ -27,7 +30,7 @@ export const paymentMetadataSchema = z.object({
   type: z.nativeEnum(FeeType, {
     errorMap: () => ({ message: 'Invalid fee type' }),
   }),
-  applicationId: z.string().optional(),
+  registrationId: z.string().optional(),
 });
 
 export const amountSchema = z.object({
