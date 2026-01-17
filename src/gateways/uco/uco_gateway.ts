@@ -7,7 +7,6 @@ import {
   VerificationRequest,
   VerificationResponse,
   GatewayType,
-  PaymentStatus,
 } from '@/types';
 import { AESUtil, log } from '@/utils';
 import { ERROR_CODES, ERROR_MESSAGES } from '@/constants';
@@ -53,7 +52,6 @@ export class UCOGateway extends BaseGateway {
       },
       'UCOGateway'
     );
-
     try {
       // Build UCO payment request
       const paymentData: UCOPaymentRequest = {
@@ -72,8 +70,8 @@ export class UCOGateway extends BaseGateway {
           semester: request.metadata.semester,
           type: request.metadata.type,
         }),
-        udf6: 'NA',
-        udf7: 'NA',
+        udf6: request.metadata.roll || 'NA',
+        udf7: request.metadata.registrationId || 'NA',
         udf8: 'NA',
         udf9: 'NA',
         udf10: 'NA',
@@ -87,7 +85,6 @@ export class UCOGateway extends BaseGateway {
         txnNote: 'Student Fee Payment',
         vpa: this.config.terminalId,
       };
-
       log.debug(
         'UCO payment data prepared',
         {
@@ -399,6 +396,10 @@ export class UCOGateway extends BaseGateway {
           term: metadata.term,
           semester: metadata.semester,
           type: metadata.type,
+          roll:
+            requeryResponse.udf6 !== 'NA' ? requeryResponse.udf6 : undefined,
+          registrationId:
+            requeryResponse.udf7 !== 'NA' ? requeryResponse.udf7 : undefined,
         },
         rawResponse: requeryResponse,
         verifiedAt: new Date().toISOString(),
