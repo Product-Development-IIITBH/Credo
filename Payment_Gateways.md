@@ -171,64 +171,7 @@ SAPv2 → Credo → Canara (JWS Signed Request)
 
 ---
 
-## 6. Console Gateway (Development Only)
-
-> **Purpose**: Allow developers to bypass real gateways during local/dev testing.
-
-### 6.1 When to Use
-
-- Local development
-- CI pipelines
-- Frontend integration testing
-- Demo environments
-
-❌ NEVER enable in production
-
----
-
-### 6.2 How Console Gateway Works
-
-```
-SAPv2 → Credo (Console Gateway)
-           ↓
-       Immediate Response
-           ↓
-    Emit PaymentCompleted Event
-```
-
-### 6.3 Console Gateway Behavior
-
-- No encryption
-- No redirect
-- No callback
-- Immediate deterministic response
-
-### 6.4 Sample Config
-
-```env
-PAYMENT_GATEWAY=CONSOLE
-```
-
-### 6.5 Sample Response
-
-```json
-{
-  "merchantOrderNo": "DEV-ORDER-001",
-  "gateway": "CONSOLE",
-  "status": "SUCCESS",
-  "refno": "DEV-REF-001",
-  "amount": 100
-}
-```
-
-### 6.6 Safety Guards
-
-- Environment check required
-- Hard fail if enabled in production
-
----
-
-## 7. What to Trust vs What Not to Trust
+## 6. What to Trust vs What Not to Trust
 
 | Item                       | Trust?        |
 | -------------------------- | ------------- |
@@ -236,7 +179,6 @@ PAYMENT_GATEWAY=CONSOLE
 | Gateway callback payload   | ❌ No         |
 | Requery / verification API | ✅ Yes        |
 | refno                      | ⚠️ Audit only |
-| Console gateway result     | ✅ Dev only   |
 
 ---
 
@@ -246,7 +188,6 @@ PAYMENT_GATEWAY=CONSOLE
 - Canara relies on **signed status codes**
 - SAPv2 is the **network boundary**
 - Credo is the **gateway authority**
-- Console gateway speeds up development safely
 
 > This document should be treated as the **canonical reference** for payment gateway behavior.
 

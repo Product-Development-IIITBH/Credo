@@ -489,7 +489,7 @@ interface LogEntry {
   level: 'TRACE' | 'DEBUG' | 'INFO' | 'WARN' | 'ERROR' | 'FATAL';
 
   // Context Fields
-  gateway?: string; // UCO, SBI, CANARA, CONSOLE
+  gateway?: string; // UCO, SBI, CANARA
   merchantOrderNo?: string; // Primary correlation key
   paymentIntent?: string; // SAPv2's idempotency key
   refno?: string; // Gateway transaction ID
